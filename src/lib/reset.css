@@ -1,0 +1,25 @@
+:root {
+  --font-size: 16px;
+  --line-height: 1.5;
+  --text-color: #2C3E50;
+  --background-color: #fff;
+  --sans-serif: sans-serif;
+  --header-height: 4rem;
+  --max-width: 1200px;
+}
+*, *::before, *::after { box-sizing: border-box; }
+html, body { height: 100vh; }
+html { font-size: var(--font-size); }
+body {
+  margin: 0;
+  font-family: var(--sans-serif);
+  font-size: var(--font-size);
+  line-height: 1.5;
+  color: var(--text-color);
+  background-color: var(--background-color);
+}
+h1, h2 {
+  line-height: 1.2;
+  margin: 0;
+}
+p { margin: 0.5em 0; }
