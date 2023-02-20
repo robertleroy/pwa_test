@@ -15,6 +15,18 @@
       "type": "image/svg",
       "sizes": "192x192 512x512",
       "purpose": "maskable any"
+    },
+    {
+      "src": "pwa_512.svg",
+      "type": "image/svg",
+      "sizes": "512x512",
+      "purpose": "maskable"
+    },
+    {
+      "src": "pwa_192.svg",
+      "type": "image/svg",
+      "sizes": "192x192",
+      "purpose": "maskable"
     }
   ]
 }

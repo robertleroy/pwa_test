@@ -2,7 +2,7 @@ import { build, files } from '$service-worker';
  
 // Create a unique cache name for this deployment
 // const CACHE = `cache-${version}`;
-const CACHE = "cache-pwa-0.0.3";
+const CACHE = "cache-pwa-0.0.1";
  
 const ASSETS = [
   ...build, // the app itself
@@ -28,7 +28,7 @@ self.addEventListener('activate', (event) => {
 
   async function deleteOldCaches() {
     for (const key of await caches.keys()) {
-      if (key.includes('cache-pwa') && key !== CACHE) await caches.delete(key);     
+      if (key.includes('cache-pwa-') && key !== CACHE) await caches.delete(key);     
     }
   }
  

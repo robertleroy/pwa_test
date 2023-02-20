@@ -31,7 +31,7 @@ const c = [
   "/pwa_test/pwa_192.png",
   "/pwa_test/pwa_512.png",
   "/pwa_test/pwa_master.svg"
-], p = "cache-pwa-0.0.3", _ = [
+], p = "cache-pwa-0.0.1", _ = [
   ...c,
   // the app itself
   ...n
@@ -48,7 +48,7 @@ self.addEventListener("activate", (a) => {
   console.info("activate");
   async function e() {
     for (const t of await caches.keys())
-      t.includes("cache-pwa") && t !== p && await caches.delete(t);
+      t.includes("cache-pwa-") && t !== p && await caches.delete(t);
   }
   a.waitUntil(e());
 });
