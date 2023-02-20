@@ -31,7 +31,7 @@ const c = [
   "/pwa_test/pwa_192.png",
   "/pwa_test/pwa_512.png",
   "/pwa_test/pwa_master.svg"
-], p = "cache-pwa-0.0.6", _ = [
+], p = "cache-pwa-0.0.2", _ = [
   ...c,
   // the app itself
   ...n

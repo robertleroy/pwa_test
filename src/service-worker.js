@@ -2,7 +2,7 @@ import { build, files } from '$service-worker';
  
 // Create a unique cache name for this deployment
 // const CACHE = `cache-${version}`;
-const CACHE = "cache-pwa-0.0.6";
+const CACHE = "cache-pwa-0.0.2";
  
 const ASSETS = [
   ...build, // the app itself
@@ -25,19 +25,6 @@ self.addEventListener('install', (event) => {
 self.addEventListener('activate', (event) => {
   console.info("activate");
   // Remove previous cached data from disk  
-
-  // async function deleteOldCaches() {
-  //   const existingCaches = await caches.keys();
-  //   const relevantCaches = existingCaches.filter(str => str.includes('cache-pwa'));
-  //   const oldCaches = relevantCaches.filter(c => c !== cacheName);
-
-  //   console.info("oldCaches", oldCaches);
-
-  //   for (const key of oldCaches) {
-  //     if (key !== CACHE) await caches.delete(key);     
-  //   }
-  // }
-  
 
   async function deleteOldCaches() {
     for (const key of await caches.keys()) {
