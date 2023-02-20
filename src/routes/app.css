@@ -20,6 +20,7 @@ html {
   
 }
 .toc {
+  display: none;
   position: fixed;
   width: var(--offset);
 
@@ -46,4 +47,11 @@ pre[class^="language-"] {
 code:not([class^="language-"]) { 
   /* background: hsl(210,20%,93%);  */
   font-weight: bolder;
+}
+
+
+@media (min-width: 768px) {
+  .toc {
+    display: initial;
+  }
 }
