@@ -1,6 +1,9 @@
 <script>
+  import { base } from '$app/paths';
   import './app.css';
   let title = 'PWA';
+
+  // console.log(`test: ${$app/paths}`)
   
   let online;
   const routes = [
@@ -19,7 +22,7 @@
   <div class='flex'>
     <div class='title' style:color={online ? 'currentColor' : 'red'}>
       
-      <a href='/'>
+      <a href='{ base }/'>
         <img src="/pwa.svg" alt="logo">
       </a>
     </div>
@@ -30,7 +33,7 @@
     <nav>
       {#each routes as route}
       <div class='route'>
-        <a href={route.path}>{route.name}</a>
+        <a href={base}{route.path}>{route.name}</a>
       </div>
       {/each}
     </nav>

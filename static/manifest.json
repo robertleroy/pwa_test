@@ -1,32 +1,32 @@
 {
-    "name": "svelte-test-pwa",
-    "short_name": "svelte-pwa",
-    "start_url" : "https://robertleroy.github.io/pwa_test/",
-	  "scope" : "/pwa_test/",
-    "display": "standalone",
-    "background_color": "#fff",
-    "description": "Test for a simple pwa",
-    "theme_color": "#5a0fc8",
-    "accent_color": "#c8590f",
-    "orientation": "portrait",
-    "icons": [
-      {
-        "src": "pwa_512.png",
-        "type": "image/png",
-        "sizes": "512x512",
-        "purpose": "maskable"
-      },
-      {
-        "src": "pwa_512.png",
-        "type": "image/png",
-        "sizes": "512x512",
-        "purpose": "maskable"
-      },
-      {
-        "src": "pwa.svg",
-        "type": "image/png",
-        "sizes": "512x512",
-        "purpose": "any"
-      }
-    ]
+  "name": "svelte-test-pwa",
+  "short_name": "svelte-pwa",
+  "start_url": "/pwa_test/",
+  "scope": "/pwa_test/",
+  "display": "standalone",
+  "background_color": "#fff",
+  "description": "Test for a simple pwa",
+  "theme_color": "#5a0fc8",
+  "accent_color": "#c8590f",
+  "orientation": "portrait",
+  "icons": [
+    {
+      "src": "pwa_512.png",
+      "type": "image/png",
+      "sizes": "512x512",
+      "purpose": "maskable"
+    },
+    {
+      "src": "pwa_512.png",
+      "type": "image/png",
+      "sizes": "512x512",
+      "purpose": "maskable"
+    },
+    {
+      "src": "pwa.svg",
+      "type": "image/png",
+      "sizes": "512x512",
+      "purpose": "any"
+    }
+  ]
 }
