@@ -3,7 +3,7 @@
   const links = [
     { name: 'Adapter Static', path: '#top' },
     // { name: 'Config Adapter', path: '#config' },
-    { name: 'Pre-render Pages', path: '#prerender' },
+    { name: 'Pre-Render Pages', path: '#prerender' },
     { name: 'Configure Paths', path: '#paths' }
   ]
 </script>
@@ -64,7 +64,7 @@ adapter: adapter({
 
 <br><br id='prerender' />
 
-## Pre-render pages
+## Pre-Render pages
 
 ``` js
 // +layout.js
