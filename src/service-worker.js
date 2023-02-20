@@ -1,7 +1,8 @@
-import { build, files, version } from '$service-worker';
+import { build, files } from '$service-worker';
  
 // Create a unique cache name for this deployment
-const CACHE = `cache-${version}`;
+// const CACHE = `cache-${version}`;
+const CACHE = "cache-pwa-0.0.1";
 console.log('CACHE',CACHE);
 console.log('Hello World');
  

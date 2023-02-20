@@ -28,12 +28,11 @@ const c = [
   "/pwa_test/pwa.png",
   "/pwa_test/pwa.svg",
   "/pwa_test/pwa_192.png",
-  "/pwa_test/pwa_512.png",
-  "/pwa_test/pwa_master.svg"
-], o = "1676915134285", s = `cache-${o}`;
+  "/pwa_test/pwa_512.png"
+], s = "cache-pwa-0.0.1";
 console.log("CACHE", s);
 console.log("Hello World");
-const _ = [
+const o = [
   ...c,
   // the app itself
   ...n
@@ -41,7 +40,7 @@ const _ = [
 ];
 self.addEventListener("install", (a) => {
   async function t() {
-    await (await caches.open(s)).addAll(_), console.log("addFilesToCache");
+    await (await caches.open(s)).addAll(o), console.log("addFilesToCache");
   }
   a.waitUntil(t());
 });
