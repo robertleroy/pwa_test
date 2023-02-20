@@ -29,39 +29,38 @@ const c = [
   "/pwa_test/pwa.svg",
   "/pwa_test/pwa_192.png",
   "/pwa_test/pwa_512.png"
-], s = "cache-pwa-0.0.1";
-console.log("CACHE", s);
-console.log("Hello World");
-const o = [
+], p = "cache-pwa-0.0.2", _ = [
   ...c,
   // the app itself
   ...n
   // everything in `static`
 ];
 self.addEventListener("install", (a) => {
-  async function t() {
-    await (await caches.open(s)).addAll(o), console.log("addFilesToCache");
+  console.info("install"), self.skipWaiting();
+  async function e() {
+    await (await caches.open(p)).addAll(_);
   }
-  a.waitUntil(t());
+  a.waitUntil(e());
 });
 self.addEventListener("activate", (a) => {
-  async function t() {
-    for (const e of await caches.keys())
-      e !== s && await caches.delete(e), console.log("deleteOldCaches");
+  console.info("activate");
+  async function e() {
+    for (const t of await caches.keys())
+      t !== p && await caches.delete(t);
   }
-  a.waitUntil(t());
+  a.waitUntil(e());
 });
 self.addEventListener("fetch", (a) => {
   if (a.request.method !== "GET")
     return;
-  async function t() {
-    const e = await caches.open(s);
+  async function e() {
+    const t = await caches.open(p);
     try {
-      const p = await fetch(a.request);
-      return p.status === 200 && e.put(a.request, p.clone()), p;
+      const s = await fetch(a.request);
+      return s.status === 200 && t.put(a.request, s.clone()), s;
     } catch {
-      return e.match(a.request);
+      return t.match(a.request);
     }
   }
-  a.respondWith(t());
+  a.respondWith(e());
 });
