@@ -72,7 +72,7 @@
     }
     nav {
       display: flex;
-      align-items: middle;
+      align-items: center;
       gap: 0 1rem;
     }
   }
