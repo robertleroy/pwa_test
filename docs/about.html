@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<link rel="icon" href="/pwa_test/favicon.png" />
+    <link rel="manifest" crossorigin="use-credentials" href="/pwa_test/manifest.json" />
+		<meta name="viewport" content="width=device-width" />
+		<meta http-equiv="content-security-policy" content="">
+		<link rel="modulepreload" href="/pwa_test/_app/immutable/start-68c02871.js">
+		<link rel="modulepreload" href="/pwa_test/_app/immutable/chunks/index-f05a2fe5.js">
+		<link rel="modulepreload" href="/pwa_test/_app/immutable/chunks/singletons-44533c24.js">
+		<link rel="modulepreload" href="/pwa_test/_app/immutable/chunks/paths-93b45301.js">
+		<script>
+			if ('serviceWorker' in navigator) {
+				addEventListener('load', function () {
+					navigator.serviceWorker.register('/pwa_test/service-worker.js');
+				});
+			}
+		</script>
+	</head>
+	<body data-sveltekit-preload-data="hover">
+		<div style="display: contents">
+		<script type="module" data-sveltekit-hydrate="45h">
+			import { start } from "/pwa_test/_app/immutable/start-68c02871.js";
+
+			start({
+				assets: "/pwa_test",
+				env: {},
+				target: document.querySelector('[data-sveltekit-hydrate="45h"]').parentNode,
+				version: "1676895967308"
+			});
+		</script></div>
+	</body>
+</html>

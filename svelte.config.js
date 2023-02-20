@@ -14,8 +14,8 @@ const config = {
       // default options are shown. On some platforms
       // these options are set automatically — see below
       {
-        // pages: "build",
-        // assets: "build",
+        pages: "docs",
+        assets: "docs",
         fallback: "app.html",
         // precompress: false,
         // strict: true,
