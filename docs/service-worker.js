@@ -31,7 +31,7 @@ const n = [
   "/pwa_test/pwa_192.png",
   "/pwa_test/pwa_512.png",
   "/pwa_test/pwa_master.svg"
-], c = "cache-pwa-0.0.3", _ = [
+], c = "cache-pwa-0.0.4", o = [
   ...n,
   // the app itself
   ...i
@@ -40,15 +40,16 @@ const n = [
 self.addEventListener("install", (a) => {
   console.info("install"), self.skipWaiting();
   async function e() {
-    await (await caches.open(c)).addAll(_);
+    await (await caches.open(c)).addAll(o);
   }
   a.waitUntil(e());
 });
-self.addEventListener("activate", async (a) => {
+self.addEventListener("activate", (a) => {
   console.info("activate");
   async function e() {
-    return (await (await caches.keys()).filter((p) => p.includes("cache-pwa"))).filter((p) => p !== cacheName);
+    return (await caches.keys()).filter((p) => p.includes("cache-pwa")).filter((p) => p !== cacheName);
   }
+  console.info("oldCaches", e);
   async function s() {
     for (const t of await e())
       t !== c && await caches.delete(t);
