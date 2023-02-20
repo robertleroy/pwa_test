@@ -47,8 +47,8 @@
 {
   "name": "svelte-test-pwa",
   "short_name": "svelte-pwa",
-  "start_url": "/",         /* or '/repo_name/' */
-  "scope": "/",             /* or '/repo_name/' */
+  "start_url": "/pwa_test/",
+  "scope": "/pwa_test/",
   "display": "standalone",
   "background_color": "#fff",
   "description": "Test for a simple pwa",
@@ -63,14 +63,14 @@
       "purpose": "maskable any"
     },
     {
-      "src": "pwa_512.svg",
-      "type": "image/svg",
+      "src": "pwa_512.png",
+      "type": "image/png",
       "sizes": "512x512",
       "purpose": "maskable"
     },
     {
-      "src": "pwa_192.svg",
-      "type": "image/svg",
+      "src": "pwa_192.png",
+      "type": "image/png",
       "sizes": "192x192",
       "purpose": "maskable"
     }
@@ -122,7 +122,7 @@ self.addEventListener('activate', (event) => {
   /* Remove previous cached data from disk  */
   async function deleteOldCaches() {
     for (const key of await caches.keys()) {
-      if (key.includes('cache-pwa-') && key !== CACHE_NAME) await caches.delete(key);     
+      if (key.includes('cache-pwa') && key !== CACHE_NAME) await caches.delete(key);     
     }
   }
   event.waitUntil(deleteOldCaches());
