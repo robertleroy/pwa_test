@@ -11,22 +11,10 @@
   "orientation": "portrait",
   "icons": [
     {
-      "src": "pwa_512.png",
+      "src": "logo.png",
       "type": "image/png",
-      "sizes": "512x512",
-      "purpose": "maskable"
-    },
-    {
-      "src": "pwa_192.png",
-      "type": "image/png",
-      "sizes": "192x192",
-      "purpose": "maskable"
-    },
-    {
-      "src": "pwa_512.png",
-      "type": "image/png",
-      "sizes": "512x512",
-      "purpose": "any"
+      "sizes": "48x48 72x72 96x96 128x128 256x256 512x512",
+      "purpose": "maskable any"
     }
   ]
 }

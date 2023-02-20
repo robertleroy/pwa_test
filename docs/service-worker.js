@@ -1,4 +1,4 @@
-const c = [
+const n = [
   "/pwa_test/_app/immutable/chunks/0-f1a1b1a4.js",
   "/pwa_test/_app/immutable/chunks/1-92c365ac.js",
   "/pwa_test/_app/immutable/chunks/2-4c5e8afd.js",
@@ -19,47 +19,52 @@ const c = [
   "/pwa_test/_app/immutable/components/pages/about/_page.md-bb8ad695.js",
   "/pwa_test/_app/immutable/components/pages/gh_pages/_page.md-769cbd6c.js",
   "/pwa_test/_app/immutable/components/pages/pwa/_page.md-a0766a34.js"
-], n = [
+], i = [
   "/pwa_test/.nojekyll",
   "/pwa_test/apple-touch-icon.png",
   "/pwa_test/favicon.png",
   "/pwa_test/favicon.svg",
+  "/pwa_test/logo.svg",
   "/pwa_test/manifest.json",
   "/pwa_test/pwa.png",
   "/pwa_test/pwa.svg",
   "/pwa_test/pwa_192.png",
-  "/pwa_test/pwa_512.png"
-], p = "cache-pwa-0.0.2", _ = [
-  ...c,
+  "/pwa_test/pwa_512.png",
+  "/pwa_test/pwa_master.svg"
+], c = "cache-pwa-0.0.3", _ = [
+  ...n,
   // the app itself
-  ...n
+  ...i
   // everything in `static`
 ];
 self.addEventListener("install", (a) => {
   console.info("install"), self.skipWaiting();
   async function e() {
-    await (await caches.open(p)).addAll(_);
+    await (await caches.open(c)).addAll(_);
   }
   a.waitUntil(e());
 });
-self.addEventListener("activate", (a) => {
+self.addEventListener("activate", async (a) => {
   console.info("activate");
   async function e() {
-    for (const t of await caches.keys())
-      t !== p && await caches.delete(t);
+    return (await (await caches.keys()).filter((p) => p.includes("cache-pwa"))).filter((p) => p !== cacheName);
   }
-  a.waitUntil(e());
+  async function s() {
+    for (const t of await e())
+      t !== c && await caches.delete(t);
+  }
+  a.waitUntil(s());
 });
 self.addEventListener("fetch", (a) => {
   if (a.request.method !== "GET")
     return;
   async function e() {
-    const t = await caches.open(p);
+    const s = await caches.open(c);
     try {
-      const s = await fetch(a.request);
-      return s.status === 200 && t.put(a.request, s.clone()), s;
+      const t = await fetch(a.request);
+      return t.status === 200 && s.put(a.request, t.clone()), t;
     } catch {
-      return t.match(a.request);
+      return s.match(a.request);
     }
   }
   a.respondWith(e());
