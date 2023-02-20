@@ -167,7 +167,7 @@ import { prism } from '$lib/scripts/actions';
   --green-2: #36a161;
   --purple-2: #6036a1;
   --orange-2: #a16136;
-  --offset: 12rem;
+  --offset: 0;
 }
 html {
   scroll-behavior: smooth;
@@ -194,14 +194,17 @@ h2 { font-size: 1.25rem; }
 ul { list-style-position: inside; padding: 0; }
 ul ul { padding-left: 1rem; }
 pre[class^="language-"] { 
-  max-width: 840px;
+  max-width: 900px;
   /* margin: 0 auto; */
 }
 code:not([class^="language-"]) { 
   /* background: hsl(210,20%,93%);  */
   font-weight: bolder;
 }
-@media (min-width: 768px) {
+@media (min-width: 1024px) {
+  :root {
+    --offset: 12rem;
+  }
   .toc {
     display: initial;
   }
