@@ -26,13 +26,14 @@ const _ = [
   "/pwa_test/favicon.svg",
   "/pwa_test/green.png",
   "/pwa_test/manifest.json",
+  "/pwa_test/orange.png",
   "/pwa_test/pwa.png",
   "/pwa_test/pwa.svg",
   "/pwa_test/pwa_192.png",
   "/pwa_test/pwa_512.png",
   "/pwa_test/pwa_master.svg",
   "/pwa_test/splash.png"
-], o = "1676908118703", c = `cache-${o}`, n = [
+], o = "1676908920741", n = `cache-${o}`, c = [
   ..._,
   // the app itself
   ...l
@@ -41,7 +42,7 @@ const _ = [
 self.addEventListener("install", (a) => {
   console.log("install");
   async function t() {
-    await (await caches.open(c)).addAll(n), console.log("addFilesToCache");
+    await (await caches.open(n)).addAll(c), console.log("addFilesToCache");
   }
   a.waitUntil(t());
 });
@@ -49,7 +50,7 @@ self.addEventListener("activate", (a) => {
   console.log("activate");
   async function t() {
     for (const e of await caches.keys())
-      e !== c && await caches.delete(e), console.log("deleteOldCaches");
+      e !== n && await caches.delete(e), console.log("deleteOldCaches");
   }
   a.waitUntil(t());
 });
@@ -57,8 +58,8 @@ self.addEventListener("fetch", (a) => {
   if (a.request.method !== "GET")
     return;
   async function t() {
-    const e = new URL(a.request.url), s = await caches.open(c);
-    if (n.includes(e.pathname))
+    const e = new URL(a.request.url), s = await caches.open(n);
+    if (c.includes(e.pathname))
       return s.match(a.request);
     try {
       const p = await fetch(a.request);

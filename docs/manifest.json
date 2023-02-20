@@ -11,22 +11,28 @@
   "orientation": "portrait",
   "icons": [
     {
-      "src": "pwa_512.png",
+      "src": "orange.svg",
       "type": "image/png",
-      "sizes": "512x512",
-      "purpose": "maskable"
-    },
-    {
-      "src": "pwa_512.png",
-      "type": "image/png",
-      "sizes": "512x512",
-      "purpose": "maskable"
+      "sizes": "192x192",
+      "purpose": "any"
     },
     {
       "src": "green.svg",
       "type": "image/png",
       "sizes": "512x512",
       "purpose": "any"
+    },
+    {
+      "src": "pwa_512.png",
+      "type": "image/png",
+      "sizes": "512x512",
+      "purpose": "maskable"
+    },
+    {
+      "src": "pwa_512.png",
+      "type": "image/png",
+      "sizes": "512x512",
+      "purpose": "maskable"
     }
   ]
 }
