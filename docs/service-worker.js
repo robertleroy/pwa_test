@@ -1,4 +1,4 @@
-const n = [
+const i = [
   "/pwa_test/_app/immutable/chunks/0-f1a1b1a4.js",
   "/pwa_test/_app/immutable/chunks/1-92c365ac.js",
   "/pwa_test/_app/immutable/chunks/2-4c5e8afd.js",
@@ -19,7 +19,7 @@ const n = [
   "/pwa_test/_app/immutable/components/pages/about/_page.md-bb8ad695.js",
   "/pwa_test/_app/immutable/components/pages/gh_pages/_page.md-769cbd6c.js",
   "/pwa_test/_app/immutable/components/pages/pwa/_page.md-a0766a34.js"
-], i = [
+], _ = [
   "/pwa_test/.nojekyll",
   "/pwa_test/apple-touch-icon.png",
   "/pwa_test/favicon.png",
@@ -31,42 +31,40 @@ const n = [
   "/pwa_test/pwa_192.png",
   "/pwa_test/pwa_512.png",
   "/pwa_test/pwa_master.svg"
-], c = "cache-pwa-0.0.4", o = [
-  ...n,
+], c = "cache-pwa-0.0.5", o = [
+  ...i,
   // the app itself
-  ...i
+  ..._
   // everything in `static`
 ];
 self.addEventListener("install", (a) => {
   console.info("install"), self.skipWaiting();
-  async function e() {
+  async function t() {
     await (await caches.open(c)).addAll(o);
   }
-  a.waitUntil(e());
+  a.waitUntil(t());
 });
 self.addEventListener("activate", (a) => {
   console.info("activate");
-  async function e() {
-    return (await caches.keys()).filter((p) => p.includes("cache-pwa")).filter((p) => p !== cacheName);
+  async function t() {
+    const n = (await caches.keys()).filter((e) => e.includes("cache-pwa")).filter((e) => e !== cacheName);
+    console.info("oldCaches", n);
+    for (const e of n)
+      e !== c && await caches.delete(e);
   }
-  console.info("oldCaches", e);
-  async function s() {
-    for (const t of await e())
-      t !== c && await caches.delete(t);
-  }
-  a.waitUntil(s());
+  a.waitUntil(t());
 });
 self.addEventListener("fetch", (a) => {
   if (a.request.method !== "GET")
     return;
-  async function e() {
+  async function t() {
     const s = await caches.open(c);
     try {
-      const t = await fetch(a.request);
-      return t.status === 200 && s.put(a.request, t.clone()), t;
+      const p = await fetch(a.request);
+      return p.status === 200 && s.put(a.request, p.clone()), p;
     } catch {
       return s.match(a.request);
     }
   }
-  a.respondWith(e());
+  a.respondWith(t());
 });
