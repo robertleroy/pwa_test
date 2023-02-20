@@ -2,7 +2,7 @@ import { build, files } from '$service-worker';
  
 // Create a unique cache name for this deployment
 // const CACHE = `cache-${version}`;
-const CACHE = "cache-pwa-0.0.2";
+const CACHE = "cache-pwa-0.0.3";
  
 const ASSETS = [
   ...build, // the app itself
