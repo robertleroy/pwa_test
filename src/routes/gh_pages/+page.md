@@ -115,7 +115,6 @@ const config = {
 </header>
 ```
 
-  <br id='' /> <br id='' />  
 
   </div>
 </div>

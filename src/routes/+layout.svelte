@@ -43,6 +43,8 @@
 
 <main>
   <div class='router'><slot /></div>
+  
+  <br/> <br/> 
 </main>
 
 <style lang='postcss'>
@@ -53,6 +55,10 @@
   header {
     position: fixed;
     top: 0; left: 0; right: 0;
+    height: var(--header-height);
+
+    display: flex;
+    align-items: baseline;
     border-bottom: 1px solid #ccc;
     background-color: var(--background-color);
     z-index: 10;
@@ -61,6 +67,7 @@
     margin-top: var(--header-height);
   }
   .flex {
+    flex: 1;
     display: flex;
     justify-content: space-between;
     align-items: center;
