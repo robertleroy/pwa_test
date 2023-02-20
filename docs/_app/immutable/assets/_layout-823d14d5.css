@@ -8,7 +8,7 @@
   --max-width: 1200px;
 }
 *, *::before, *::after { box-sizing: border-box; }
-html, body { height: 100vh; }
+html { height: 100vh; }
 html { font-size: var(--font-size); }
 body {
   margin: 0;
@@ -17,6 +17,7 @@ body {
   line-height: 1.5;
   color: var(--text-color);
   background-color: var(--background-color);
+  overflow-y: scroll;
 }
 h1, h2 {
   line-height: 1.2;
@@ -37,8 +38,15 @@ code[class*="language-"] {
 	word-spacing: normal;
 	word-break: normal;
 	line-height: 1.5;
-  tab-size: 2;
-  hyphens: none;
+  -moz-tab-size: 2;
+    -o-tab-size: 2;
+       tab-size: 2;
+  -webkit-hyphens: none;
+          hyphens: none;
+}
+pre[class*="language-"]::-moz-selection, code[class*="language-"]::-moz-selection, pre[class*="language-"] *::-moz-selection, code[class*="language-"] *::-moz-selection {
+	text-shadow: none;
+	background: #264F78;
 }
 pre[class*="language-"]::selection,
 code[class*="language-"]::selection,
@@ -152,19 +160,43 @@ export function prism(node, n) {
 import { prism } from '$lib/scripts/actions';
 <pre use:prism class="language-js"><code>import Prism from 'prismjs';</code></pre>
 */
-:route {
+:root {
   --green: #0fc859;
   --purple: #5a0fc8;
   --orange: #c8590f;
   --green-2: #36a161;
   --purple-2: #6036a1;
   --orange-2: #a16136;
+  --offset: 12rem;
+}
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: var(--header-height);
+}
+.page {
+  position: relative;
+  
+}
+.toc {
+  position: fixed;
+  width: var(--offset);
+}
+.toc a {
+    color: inherit;
+  }
+.toc a:not(:hover:not(:active)) { text-decoration: none; }
+.content {
+  margin-left: var(--offset);
 }
 h1 { font-size: 1.5rem;  margin: 1rem 0; }
 h2 { font-size: 1.25rem; }
 ul { list-style-position: inside; padding: 0; }
 ul ul { padding-left: 1rem; }
+pre[class^="language-"] { 
+  max-width: 840px;
+  /* margin: 0 auto; */
+}
 code:not([class^="language-"]) { 
   /* background: hsl(210,20%,93%);  */
   font-weight: bolder;
-}header.svelte-egbqjr.svelte-egbqjr{border-bottom:1px solid #ccc}header.svelte-egbqjr .flex.svelte-egbqjr{display:flex;justify-content:space-between;align-items:center;gap:0 1rem;padding:1rem 2rem}header.svelte-egbqjr a.svelte-egbqjr{color:inherit}header.svelte-egbqjr a.svelte-egbqjr:not(:hover:not(:active)){text-decoration:none}header.svelte-egbqjr nav.svelte-egbqjr{display:flex;align-items:middle;gap:0 1rem}img.svelte-egbqjr.svelte-egbqjr{height:1.5rem;vertical-align:middle}.offline.svelte-egbqjr.svelte-egbqjr{font-family:"Georgia", "Garamond", "Didot", serif;color:tomato}.router.svelte-egbqjr.svelte-egbqjr{padding:0.5rem 2rem}
+}header.svelte-1rbrg8q .flex.svelte-1rbrg8q,.router.svelte-1rbrg8q.svelte-1rbrg8q{max-width:1200px;margin:0 auto}header.svelte-1rbrg8q.svelte-1rbrg8q{position:fixed;top:0;left:0;right:0;border-bottom:1px solid #ccc;background-color:var(--background-color);z-index:10}main.svelte-1rbrg8q.svelte-1rbrg8q{margin-top:var(--header-height)}.flex.svelte-1rbrg8q.svelte-1rbrg8q{display:flex;justify-content:space-between;align-items:center;gap:0 1rem;padding:1rem 2rem}.flex.svelte-1rbrg8q a.svelte-1rbrg8q{color:inherit}.flex.svelte-1rbrg8q a.svelte-1rbrg8q:not(:hover:not(:active)){text-decoration:none}.flex.svelte-1rbrg8q nav.svelte-1rbrg8q{display:flex;align-items:middle;gap:0 1rem}img.svelte-1rbrg8q.svelte-1rbrg8q{height:1.5rem;vertical-align:middle}.offline.svelte-1rbrg8q.svelte-1rbrg8q{font-family:"Georgia", "Garamond", "Didot", serif;color:tomato}.router.svelte-1rbrg8q.svelte-1rbrg8q{position:relative;padding:0.5rem 2rem}

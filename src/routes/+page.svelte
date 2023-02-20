@@ -6,7 +6,7 @@
 <h1 class="title">{title}</h1>
 
 <ul>
-  <li>A Sveltekit excersize: </li>
+  <li>A Sveltekit exercise: </li>
   <ul>
     <li>Create a Simple PWA</li>
     <li>Deploy to Github Pages</li>
@@ -15,5 +15,5 @@
 </ul>
 
 <style lang='postcss'>
-
+  
 </style>

@@ -10,19 +10,24 @@ const ASSETS = [
  
 self.addEventListener('install', (event) => {
   // Create a new cache and add all files to it
+  console.log('install');
+
   async function addFilesToCache() {
     const cache = await caches.open(CACHE);
     await cache.addAll(ASSETS);
+    console.log('addFilesToCache');
   }
  
   event.waitUntil(addFilesToCache());
 });
  
 self.addEventListener('activate', (event) => {
-  // Remove previous cached data from disk
+  // Remove previous cached data from disk     
+  console.log('activate');
   async function deleteOldCaches() {
     for (const key of await caches.keys()) {
-      if (key !== CACHE) await caches.delete(key);
+      if (key !== CACHE) await caches.delete(key);      
+      console.log('deleteOldCaches');
     }
   }
  

@@ -1,24 +1,25 @@
-const _ = [
-  "/pwa_test/_app/immutable/chunks/0-6b8b3da6.js",
-  "/pwa_test/_app/immutable/chunks/1-3f6c560a.js",
-  "/pwa_test/_app/immutable/chunks/2-50724d71.js",
+const l = [
+  "/pwa_test/_app/immutable/chunks/0-784bc731.js",
+  "/pwa_test/_app/immutable/chunks/1-92c365ac.js",
+  "/pwa_test/_app/immutable/chunks/2-4c5e8afd.js",
   "/pwa_test/_app/immutable/chunks/3-9ae3c8d2.js",
-  "/pwa_test/_app/immutable/chunks/4-0b545e71.js",
+  "/pwa_test/_app/immutable/chunks/4-e2b4f341.js",
   "/pwa_test/_app/immutable/chunks/5-67c5d6ac.js",
   "/pwa_test/_app/immutable/chunks/_layout-95f8a586.js",
   "/pwa_test/_app/immutable/chunks/index-f05a2fe5.js",
   "/pwa_test/_app/immutable/chunks/paths-93b45301.js",
-  "/pwa_test/_app/immutable/chunks/singletons-44533c24.js",
-  "/pwa_test/_app/immutable/start-68c02871.js",
-  "/pwa_test/_app/immutable/components/error.svelte-d70d6305.js",
-  "/pwa_test/_app/immutable/assets/_layout-1ccb96b8.css",
+  "/pwa_test/_app/immutable/chunks/singletons-3747866d.js",
+  "/pwa_test/_app/immutable/start-4f0b3325.js",
+  "/pwa_test/_app/immutable/assets/_error-a61fa775.css",
+  "/pwa_test/_app/immutable/components/pages/_error.svelte-4b625053.js",
+  "/pwa_test/_app/immutable/assets/_layout-470b0a0a.css",
   "/pwa_test/_app/immutable/modules/pages/_layout.js-11d4e431.js",
-  "/pwa_test/_app/immutable/components/pages/_layout.svelte-90955cf9.js",
-  "/pwa_test/_app/immutable/components/pages/_page.svelte-32d50acb.js",
+  "/pwa_test/_app/immutable/components/pages/_layout.svelte-7922a3fa.js",
+  "/pwa_test/_app/immutable/components/pages/_page.svelte-d6f6ea2f.js",
   "/pwa_test/_app/immutable/components/pages/about/_page.md-bb8ad695.js",
-  "/pwa_test/_app/immutable/components/pages/gh_pages/_page.md-182b464f.js",
+  "/pwa_test/_app/immutable/components/pages/gh_pages/_page.md-f7198e8e.js",
   "/pwa_test/_app/immutable/components/pages/pwa/_page.md-a0766a34.js"
-], u = [
+], o = [
   "/pwa_test/.nojekyll",
   "/pwa_test/apple-touch-icon.png",
   "/pwa_test/favicon.png",
@@ -29,38 +30,40 @@ const _ = [
   "/pwa_test/pwa_192.png",
   "/pwa_test/pwa_512.png",
   "/pwa_test/pwa_master.svg"
-], m = "1676895967308", c = `cache-${m}`, n = [
-  ..._,
+], _ = "1676905996569", c = `cache-${_}`, n = [
+  ...l,
   // the app itself
-  ...u
+  ...o
   // everything in `static`
 ];
-self.addEventListener("install", (t) => {
-  async function a() {
-    await (await caches.open(c)).addAll(n);
+self.addEventListener("install", (a) => {
+  console.log("install");
+  async function t() {
+    await (await caches.open(c)).addAll(n), console.log("addFilesToCache");
   }
-  t.waitUntil(a());
+  a.waitUntil(t());
 });
-self.addEventListener("activate", (t) => {
-  async function a() {
+self.addEventListener("activate", (a) => {
+  console.log("activate");
+  async function t() {
     for (const e of await caches.keys())
-      e !== c && await caches.delete(e);
+      e !== c && await caches.delete(e), console.log("deleteOldCaches");
   }
-  t.waitUntil(a());
+  a.waitUntil(t());
 });
-self.addEventListener("fetch", (t) => {
-  if (t.request.method !== "GET")
+self.addEventListener("fetch", (a) => {
+  if (a.request.method !== "GET")
     return;
-  async function a() {
-    const e = new URL(t.request.url), s = await caches.open(c);
+  async function t() {
+    const e = new URL(a.request.url), s = await caches.open(c);
     if (n.includes(e.pathname))
-      return s.match(t.request);
+      return s.match(a.request);
     try {
-      const p = await fetch(t.request);
-      return p.status === 200 && s.put(t.request, p.clone()), p;
+      const p = await fetch(a.request);
+      return p.status === 200 && s.put(a.request, p.clone()), p;
     } catch {
-      return s.match(t.request);
+      return s.match(a.request);
     }
   }
-  t.respondWith(a());
+  a.respondWith(t());
 });

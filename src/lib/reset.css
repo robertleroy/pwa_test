@@ -8,7 +8,7 @@
   --max-width: 1200px;
 }
 *, *::before, *::after { box-sizing: border-box; }
-html, body { height: 100vh; }
+html { height: 100vh; }
 html { font-size: var(--font-size); }
 body {
   margin: 0;
@@ -17,6 +17,7 @@ body {
   line-height: 1.5;
   color: var(--text-color);
   background-color: var(--background-color);
+  overflow-y: scroll;
 }
 h1, h2 {
   line-height: 1.2;

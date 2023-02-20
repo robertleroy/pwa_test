@@ -23,13 +23,14 @@
     <div class='title' style:color={online ? 'currentColor' : 'red'}>
       
       <a href='{ base }/'>
-        <img src="/pwa.svg" alt="logo">
+        <img src="{ base }/pwa.svg" alt="logo">
       </a>
     </div>
 
     {#if !online}
     <div class="offline">offline</div>
     {/if}
+
     <nav>
       {#each routes as route}
       <div class='route'>
@@ -45,24 +46,37 @@
 </main>
 
 <style lang='postcss'>
-  header {
-    border-bottom: 1px solid #ccc;
+  header .flex, .router {
+    max-width: 1200px;
+    margin: 0 auto;
   }
-  header .flex {
+  header {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    border-bottom: 1px solid #ccc;
+    background-color: var(--background-color);
+    z-index: 10;
+  }
+  main {
+    margin-top: var(--header-height);
+  }
+  .flex {
     display: flex;
     justify-content: space-between;
     align-items: center;
     gap: 0 1rem;
     padding: 1rem 2rem;
+    
+    a {  color: inherit; 
+      &:not(:hover:not(:active)) { text-decoration: none; }
+    }
+    nav {
+      display: flex;
+      align-items: middle;
+      gap: 0 1rem;
+    }
   }
-
-  header a {  color: inherit; }
-  header a:not(:hover:not(:active)) { text-decoration: none; }
-  header nav {
-    display: flex;
-    align-items: middle;
-    gap: 0 1rem;
-  }
+  
   img { 
     height: 1.5rem; 
     vertical-align: middle;
@@ -73,5 +87,8 @@
     /* font-variant: small-caps; */
     /* font-weight: bold;; */
   }
-  .router {  padding: 0.5rem 2rem; }
+  .router {  
+    position: relative;
+    padding: 0.5rem 2rem; 
+  }
 </style>
