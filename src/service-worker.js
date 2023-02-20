@@ -3,6 +3,7 @@ import { build, files, version } from '$service-worker';
 // Create a unique cache name for this deployment
 const CACHE = `cache-${version}`;
 console.log('CACHE',CACHE);
+console.log('Hello World');
  
 const ASSETS = [
   ...build, // the app itself
@@ -11,7 +12,6 @@ const ASSETS = [
  
 self.addEventListener('install', (event) => {
   // Create a new cache and add all files to it
-  console.log('install');
 
   async function addFilesToCache() {
     const cache = await caches.open(CACHE);
@@ -23,8 +23,7 @@ self.addEventListener('install', (event) => {
 });
  
 self.addEventListener('activate', (event) => {
-  // Remove previous cached data from disk     
-  console.log('activate');
+  // Remove previous cached data from disk  
   async function deleteOldCaches() {
     for (const key of await caches.keys()) {
       if (key !== CACHE) await caches.delete(key);      
@@ -40,13 +39,13 @@ self.addEventListener('fetch', (event) => {
   if (event.request.method !== 'GET') return;
  
   async function respond() {
-    const url = new URL(event.request.url);
+    // const url = new URL(event.request.url);
     const cache = await caches.open(CACHE);
  
     // `build`/`files` can always be served from the cache
-    if (ASSETS.includes(url.pathname)) {
-      return cache.match(event.request);
-    }
+    // if (ASSETS.includes(url.pathname)) {
+    //   return cache.match(event.request);
+    // }
  
     // for everything else, try the network first, but
     // fall back to the cache if we're offline

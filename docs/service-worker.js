@@ -1,4 +1,4 @@
-const o = [
+const c = [
   "/pwa_test/_app/immutable/chunks/0-f1a1b1a4.js",
   "/pwa_test/_app/immutable/chunks/1-92c365ac.js",
   "/pwa_test/_app/immutable/chunks/2-4c5e8afd.js",
@@ -19,7 +19,7 @@ const o = [
   "/pwa_test/_app/immutable/components/pages/about/_page.md-bb8ad695.js",
   "/pwa_test/_app/immutable/components/pages/gh_pages/_page.md-769cbd6c.js",
   "/pwa_test/_app/immutable/components/pages/pwa/_page.md-a0766a34.js"
-], l = [
+], n = [
   "/pwa_test/.nojekyll",
   "/pwa_test/apple-touch-icon.png",
   "/pwa_test/favicon.png",
@@ -27,26 +27,25 @@ const o = [
   "/pwa_test/manifest.json",
   "/pwa_test/pwa.png",
   "/pwa_test/pwa.svg",
-  "/pwa_test/pwa_1922.png",
-  "/pwa_test/pwa_5122.png",
+  "/pwa_test/pwa_192.png",
+  "/pwa_test/pwa_512.png",
   "/pwa_test/pwa_master.svg"
-], _ = "1676912758400", s = `cache-${_}`;
+], o = "1676915134285", s = `cache-${o}`;
 console.log("CACHE", s);
-const n = [
-  ...o,
+console.log("Hello World");
+const _ = [
+  ...c,
   // the app itself
-  ...l
+  ...n
   // everything in `static`
 ];
 self.addEventListener("install", (a) => {
-  console.log("install");
   async function t() {
-    await (await caches.open(s)).addAll(n), console.log("addFilesToCache");
+    await (await caches.open(s)).addAll(_), console.log("addFilesToCache");
   }
   a.waitUntil(t());
 });
 self.addEventListener("activate", (a) => {
-  console.log("activate");
   async function t() {
     for (const e of await caches.keys())
       e !== s && await caches.delete(e), console.log("deleteOldCaches");
@@ -57,14 +56,12 @@ self.addEventListener("fetch", (a) => {
   if (a.request.method !== "GET")
     return;
   async function t() {
-    const e = new URL(a.request.url), p = await caches.open(s);
-    if (n.includes(e.pathname))
-      return p.match(a.request);
+    const e = await caches.open(s);
     try {
-      const c = await fetch(a.request);
-      return c.status === 200 && p.put(a.request, c.clone()), c;
+      const p = await fetch(a.request);
+      return p.status === 200 && e.put(a.request, p.clone()), p;
     } catch {
-      return p.match(a.request);
+      return e.match(a.request);
     }
   }
   a.respondWith(t());
