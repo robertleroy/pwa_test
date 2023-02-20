@@ -23,7 +23,7 @@
       "purpose": "maskable"
     },
     {
-      "src": "pwa.svg",
+      "src": "green.svg",
       "type": "image/png",
       "sizes": "512x512",
       "purpose": "any"

@@ -1,4 +1,4 @@
-const l = [
+const _ = [
   "/pwa_test/_app/immutable/chunks/0-784bc731.js",
   "/pwa_test/_app/immutable/chunks/1-92c365ac.js",
   "/pwa_test/_app/immutable/chunks/2-4c5e8afd.js",
@@ -19,27 +19,29 @@ const l = [
   "/pwa_test/_app/immutable/components/pages/about/_page.md-bb8ad695.js",
   "/pwa_test/_app/immutable/components/pages/gh_pages/_page.md-f7198e8e.js",
   "/pwa_test/_app/immutable/components/pages/pwa/_page.md-a0766a34.js"
-], o = [
+], l = [
   "/pwa_test/.nojekyll",
   "/pwa_test/apple-touch-icon.png",
   "/pwa_test/favicon.png",
   "/pwa_test/favicon.svg",
+  "/pwa_test/green.png",
   "/pwa_test/manifest.json",
   "/pwa_test/pwa.png",
   "/pwa_test/pwa.svg",
   "/pwa_test/pwa_192.png",
   "/pwa_test/pwa_512.png",
-  "/pwa_test/pwa_master.svg"
-], _ = "1676905996569", c = `cache-${_}`, n = [
-  ...l,
+  "/pwa_test/pwa_master.svg",
+  "/pwa_test/splash.png"
+], o = "1676907453808", n = `cache-${o}`, c = [
+  ..._,
   // the app itself
-  ...o
+  ...l
   // everything in `static`
 ];
 self.addEventListener("install", (a) => {
   console.log("install");
   async function t() {
-    await (await caches.open(c)).addAll(n), console.log("addFilesToCache");
+    await (await caches.open(n)).addAll(c), console.log("addFilesToCache");
   }
   a.waitUntil(t());
 });
@@ -47,7 +49,7 @@ self.addEventListener("activate", (a) => {
   console.log("activate");
   async function t() {
     for (const e of await caches.keys())
-      e !== c && await caches.delete(e), console.log("deleteOldCaches");
+      e !== n && await caches.delete(e), console.log("deleteOldCaches");
   }
   a.waitUntil(t());
 });
@@ -55,8 +57,8 @@ self.addEventListener("fetch", (a) => {
   if (a.request.method !== "GET")
     return;
   async function t() {
-    const e = new URL(a.request.url), s = await caches.open(c);
-    if (n.includes(e.pathname))
+    const e = new URL(a.request.url), s = await caches.open(n);
+    if (c.includes(e.pathname))
       return s.match(a.request);
     try {
       const p = await fetch(a.request);
