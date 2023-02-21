@@ -11,12 +11,6 @@
   "orientation": "portrait",
   "icons": [
     {
-      "src": "logo.svg",
-      "type": "image/svg",
-      "sizes": "192x192 512x512",
-      "purpose": "maskable any"
-    },
-    {
       "src": "pwa_512.png",
       "type": "image/png",
       "sizes": "512x512",
